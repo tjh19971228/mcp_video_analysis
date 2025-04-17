@@ -1,4 +1,4 @@
-# 视频分析与思维导图生成 MCP 服务 | Video Analysis and Mind Map Generation MCP Service
+# 视频分析 MCP 服务 | Video Analysis MCP Service
 
 [中文](#chinese) | [English](#english)
 
@@ -26,6 +26,13 @@
       - 海外平台：YouTube、TikTok、Instagram、Lemon8
     
   - DEEPSEEK_API_KEY：用于思维导图JSON生成
+
+### 克隆项目
+
+```bash
+git clone https://github.com/tjh19971228/mcp_video_analysis.git
+cd video-analysis-mcp
+```
 
 ### 安装
 
@@ -59,7 +66,7 @@ node src/index.js
 ```json
 {
   "mcpServers": {
-    "video-analysize": {
+    "video-analysis": {
       "command": "node",
       "args": ["your_project_path/src/index.js"]
     }
@@ -146,6 +153,13 @@ This is a service based on the Model Context Protocol (MCP) for video content an
     
   - DEEPSEEK_API_KEY: For mind map JSON generation
 
+### Clone Project
+
+```bash
+git clone https://github.com/tjh19971228/mcp_video_analysis.git
+cd video-analysis-mcp
+```
+
 ### Installation
 
 ```bash
@@ -178,7 +192,7 @@ To use this MCP service with Claude desktop, edit the `claude_desktop_config.jso
 ```json
 {
   "mcpServers": {
-    "video-analysize": {
+    "video-analysis": {
       "command": "node",
       "args": ["your_project_path/src/index.js"]
     }
