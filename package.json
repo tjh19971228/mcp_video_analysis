@@ -1,6 +1,6 @@
 {
   "name": "video-analysize-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "视频理解和思维导图生成的MCP服务",
   "main": "src/index.js",
   "type": "module",
