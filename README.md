@@ -31,13 +31,15 @@
 
 ```bash
 git clone https://github.com/tjh19971228/mcp_video_analysis.git
-cd video-analysis-mcp
+cd mcp_video_analysis
 ```
 
 ### 安装
 
 ```bash
 # 安装依赖
+npm install
+ 或者
 pnpm install
 ```
 
@@ -157,13 +159,15 @@ This is a service based on the Model Context Protocol (MCP) for video content an
 
 ```bash
 git clone https://github.com/tjh19971228/mcp_video_analysis.git
-cd video-analysis-mcp
+cd mcp_video_analysis
 ```
 
 ### Installation
 
 ```bash
 # Install dependencies
+npm install
+ or
 pnpm install
 ```
 
