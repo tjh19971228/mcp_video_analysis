@@ -1,8 +1,13 @@
-# 视频分析与思维导图生成 MCP 服务
+# 视频分析与思维导图生成 MCP 服务 | Video Analysis and Mind Map Generation MCP Service
+
+[中文](#chinese) | [English](#english)
+
+<a name="chinese"></a>
+## 中文版本
 
 这是一个基于Model Context Protocol (MCP)的服务，用于视频内容分析和思维导图生成。
 
-## 功能特点
+### 功能特点
 
 - **视频分析**：从视频URL中提取关键词、摘要和关键时间点
 - **思维导图生成**：基于视频分析结果生成结构化的思维导图
@@ -10,21 +15,26 @@
   - 生成静态PNG图片格式的思维导图
   - 生成交互式HTML格式的思维导图
 
-## 环境要求
+### 环境要求
 
 - Node.js >= 14.0.0
 - 所需API密钥
-  - BILIGPT_API_KEY：用于视频内容分析
+  - BILIGPT_API_KEY：用于视频内容分析（支持多种平台）
+    - 获取方式：https://bibigpt.co/r/jSeDX0
+    - 支持的视频平台：
+      - 国内平台：哔哩哔哩、抖音、快手、小红书、西瓜视频、今日头条、可灵、优酷
+      - 海外平台：YouTube、TikTok、Instagram、Lemon8
+    
   - DEEPSEEK_API_KEY：用于思维导图JSON生成
 
-## 安装
+### 安装
 
 ```bash
 # 安装依赖
 pnpm install
 ```
 
-## 配置
+### 配置
 
 创建`.env`文件并设置必要的API密钥：
 
@@ -33,16 +43,16 @@ BILIGPT_API_KEY=your_biligpt_api_key
 DEEPSEEK_API_KEY=your_deepseek_api_key
 ```
 
-## 使用方法
+### 使用方法
 
-### 启动服务
+#### 启动服务
 
 ```bash
 # 启动MCP服务
 node src/index.js
 ```
 
-### 与Claude集成
+#### 与Claude集成
 
 要在Claude桌面版中使用此MCP服务，编辑`claude_desktop_config.json`文件：
 
@@ -57,9 +67,9 @@ node src/index.js
 }
 ```
 
-### API使用示例
+#### API使用示例
 
-#### 视频分析
+##### 视频分析
 
 ```javascript
 // 调用视频分析服务
@@ -73,7 +83,7 @@ const result = await videoAnalysis.analyzeVideo({
 // - keyTimepoints: 关键时间点列表
 ```
 
-#### 生成思维导图
+##### 生成思维导图
 
 ```javascript
 // 生成思维导图JSON
@@ -97,7 +107,7 @@ const htmlPath = await mindmap.generateMindmapHtml({
 });
 ```
 
-## 开发者指南
+### 开发者指南
 
 服务使用官方的Model Context Protocol SDK实现，主要组件包括：
 
@@ -105,6 +115,125 @@ const htmlPath = await mindmap.generateMindmapHtml({
 - `src/services/videoAnalysis.js`：视频分析服务实现
 - `src/services/mindmap.js`：思维导图生成服务实现
 
-## 许可证
+### 许可证
+
+MIT
+
+---
+
+<a name="english"></a>
+## English Version
+
+This is a service based on the Model Context Protocol (MCP) for video content analysis and mind map generation.
+
+### Features
+
+- **Video Analysis**: Extract keywords, summaries, and key timepoints from video URLs
+- **Mind Map Generation**: Create structured mind maps based on video analysis results
+  - Generate mind map data in JSON format (compatible with jsMind library)
+  - Generate mind maps as static PNG images
+  - Generate interactive HTML mind maps
+
+### Requirements
+
+- Node.js >= 14.0.0
+- Required API Keys
+  - BILIGPT_API_KEY: For video content analysis (supports multiple platforms)
+    - Get it from: https://bibigpt.co/r/jSeDX0
+    - Supported video platforms:
+      - Domestic (China): Bilibili, Douyin, Kuaishou, Xiaohongshu, Xigua Video, Toutiao, Keling, Youku
+      - International: YouTube, TikTok, Instagram, Lemon8
+    
+  - DEEPSEEK_API_KEY: For mind map JSON generation
+
+### Installation
+
+```bash
+# Install dependencies
+pnpm install
+```
+
+### Configuration
+
+Create a `.env` file and set the necessary API keys:
+
+```
+BILIGPT_API_KEY=your_biligpt_api_key
+DEEPSEEK_API_KEY=your_deepseek_api_key
+```
+
+### Usage
+
+#### Start the Service
+
+```bash
+# Start the MCP service
+node src/index.js
+```
+
+#### Claude Integration
+
+To use this MCP service with Claude desktop, edit the `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "video-analysize": {
+      "command": "node",
+      "args": ["your_project_path/src/index.js"]
+    }
+  }
+}
+```
+
+#### API Examples
+
+##### Video Analysis
+
+```javascript
+// Call the video analysis service
+const result = await videoAnalysis.analyzeVideo({
+  url: "https://www.bilibili.com/video/BVxxxxxx"
+});
+
+// The result contains:
+// - keywords: List of keywords
+// - summary: Video summary
+// - keyTimepoints: List of key timepoints
+```
+
+##### Generate Mind Maps
+
+```javascript
+// Generate mind map JSON
+const json = await mindmap.generateMindmapJson({
+  keywords: result.keywords,
+  summary: result.summary,
+  keyTimepoints: result.keyTimepoints
+});
+
+// Generate mind map image
+const imagePath = await mindmap.generateMindmapImage({
+  json: json,
+  outputPath: "./output/mindmap.png" // Optional, specify output path
+});
+
+// Generate mind map HTML
+const htmlPath = await mindmap.generateMindmapHtml({
+  json: json,
+  outputPath: "./output/mindmap.html", // Optional, specify output path
+  title: "Video Mind Map" // Optional, specify title
+});
+```
+
+### Developer Guide
+
+The service is implemented using the official Model Context Protocol SDK, with the main components including:
+
+- `src/index.js`: Service entry point, creates and starts the service using the MCP SDK
+- `src/services/videoAnalysis.js`: Video analysis service implementation
+- `src/services/mindmap.js`: Mind map generation service implementation
+
+### License
 
 MIT
