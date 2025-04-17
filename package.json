@@ -1,0 +1,31 @@
+{
+  "name": "video-analysize-mcp",
+  "version": "1.0.0",
+  "description": "视频理解和思维导图生成的MCP服务",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "example": "node src/example.js",
+    "lint": "eslint src/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MCP",
+    "video",
+    "analysis",
+    "mindmap"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.1",
+    "puppeteer": "^24.6.1",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}

@@ -1,0 +1,19 @@
+[
+  "constructor",
+  "registerCapabilities",
+  "assertCapabilityForMethod",
+  "assertNotificationCapability",
+  "assertRequestHandlerCapability",
+  "_oninitialize",
+  "getClientCapabilities",
+  "getClientVersion",
+  "getCapabilities",
+  "ping",
+  "createMessage",
+  "listRoots",
+  "sendLoggingMessage",
+  "sendResourceUpdated",
+  "sendResourceListChanged",
+  "sendToolListChanged",
+  "sendPromptListChanged"
+]
