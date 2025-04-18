@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "name": "视频内容思维导图",
+    "author": "AI Assistant",
+    "version": "1.0"
+  },
+  "format": "node_tree",
+  "data": {
+    "id": "root",
+    "topic": "利用Cursor和Figma MCP自动生成产品原型",
+    "children": [
+      {
+        "id": "tools",
+        "topic": "工具介绍",
+        "direction": "right",
+        "expanded": true,
+        "background-color": "#3DA0FF",
+        "foreground-color": "#FFFFFF",
+        "children": [
+          {
+            "id": "cursor",
+            "topic": "Cursor",
+            "direction": "right",
+            "background-color": "#70BBFF",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "figma",
+            "topic": "Figma MCP",
+            "direction": "right",
+            "background-color": "#70BBFF",
+            "foreground-color": "#333333"
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "topic": "GitHub项目",
+        "direction": "left",
+        "expanded": true,
+        "background-color": "#44D7B6",
+        "foreground-color": "#FFFFFF",
+        "children": [
+          {
+            "id": "project1",
+            "topic": "精准控制",
+            "direction": "left",
+            "background-color": "#7AEACD",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "project2",
+            "topic": "从零生成设计元素",
+            "direction": "left",
+            "background-color": "#7AEACD",
+            "foreground-color": "#333333"
+          }
+        ]
+      },
+      {
+        "id": "setup",
+        "topic": "配置步骤",
+        "direction": "right",
+        "expanded": true,
+        "background-color": "#FF9500",
+        "foreground-color": "#FFFFFF",
+        "children": [
+          {
+            "id": "install",
+            "topic": "安装包子并配置MCP",
+            "direction": "right",
+            "background-color": "#FFB870",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "websocket",
+            "topic": "启动WebSocket服务器",
+            "direction": "right",
+            "background-color": "#FFB870",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "plugin",
+            "topic": "Figma桌面端安装插件",
+            "direction": "right",
+            "background-color": "#FFB870",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "channel",
+            "topic": "获取channel值并发送给Cursor",
+            "direction": "right",
+            "background-color": "#FFB870",
+            "foreground-color": "#333333"
+          },
+          {
+            "id": "connect",
+            "topic": "配置MCP连接并开启auto agent模式",
+            "direction": "right",
+            "background-color": "#FFB870",
+            "foreground-color": "#333333"
+          }
+        ]
+      },
+      {
+        "id": "result",
+        "topic": "最终效果",
+        "direction": "left",
+        "expanded": true,
+        "background-color": "#B36DFF",
+        "foreground-color": "#FFFFFF",
+        "children": [
+          {
+            "id": "prototype",
+            "topic": "自动生成产品原型",
+            "direction": "left",
+            "background-color": "#CFA2FF",
+            "foreground-color": "#333333"
+          }
+        ]
+      }
+    ]
+  }
+} 

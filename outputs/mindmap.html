@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>利用Cursor和Figma MCP自动生成产品原型</title>
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          }
+          .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 1000;
+          }
+          .title {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 500;
+            color: #495057;
+            margin: 0;
+          }
+          .toolbar {
+            display: flex;
+            gap: 8px;
+          }
+          .btn {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            color: #495057;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+          .btn:hover {
+            background-color: #f1f3f5;
+            border-color: #adb5bd;
+          }
+          .btn:active {
+            background-color: #e9ecef;
+          }
+          #jsmind_container {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: calc(100vh - 50px);
+            background-color: #f5f5f5;
+          }
+          /* 自定义节点样式 */
+          jmnode {
+            border-radius: 5px !important;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.15) !important;
+            padding: 8px 12px !important;
+            font-family: 'Arial', sans-serif !important;
+            font-size: 14px !important;
+            transition: all 0.2s !important;
+          }
+          jmnode:hover {
+            transform: scale(1.02) !important;
+            box-shadow: 1px 2px 5px rgba(0,0,0,0.2) !important;
+          }
+          /* 根节点样式 */
+          jmnode.root {
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            padding: 10px 15px !important;
+          }
+        </style>
+        <!-- 引入jsMind依赖 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/style/jsmind.css" />
+        <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jsmind@0.8.7/es6/jsmind.draggable.js"></script>
+      </head>
+      <body>
+        <div class="header">
+          <h1 class="title">利用Cursor和Figma MCP自动生成产品原型</h1>
+          <div class="toolbar">
+            <button class="btn" id="btn-zoom-in">放大</button>
+            <button class="btn" id="btn-zoom-out">缩小</button>
+            <button class="btn" id="btn-expand-all">全部展开</button>
+            <button class="btn" id="btn-collapse-all">全部折叠</button>
+            <button class="btn" id="btn-screenshot">保存截图</button>
+            <button class="btn" id="btn-toggle-theme">切换主题</button>
+            <button class="btn" id="btn-toggle-toolbar">隐藏工具栏</button>
+          </div>
+        </div>
+
+        <div id="jsmind_container"></div>
+
+        <script>
+          // jsMind实例
+          let jm;
+
+          // 主题列表
+          const themes = ['primary', 'warning', 'danger', 'success', 'info', 'greensea', 'nephrite', 'belizehole', 'wisteria', 'asphalt', 'orange', 'pumpkin', 'pomegranate', 'clouds', 'asbestos'];
+          let currentThemeIndex = 0;
+
+          // 渲染思维导图
+          function renderMindmap() {
+            try {
+              // jsMind配置
+              const options = {
+                container: 'jsmind_container',
+                theme: themes[currentThemeIndex],
+                editable: true,
+                view: {
+                  engine: 'svg',       // 使用SVG引擎
+                  hmargin: 130,        // 水平边距
+                  vmargin: 80,         // 垂直边距
+                  line_width: 2,       // 线宽
+                  line_color: '#555'   // 线颜色
+                },
+                layout: {
+                  hspace: 40,          // 节点水平间距
+                  vspace: 25,          // 节点垂直间距
+                  pspace: 15           // 节点内边距
+                }
+              };
+
+              // 创建jsMind实例
+              jm = new jsMind(options);
+
+              // 显示思维导图数据
+              jm.show({"meta":{"name":"视频内容思维导图","author":"AI Assistant","version":"1.0"},"format":"node_tree","data":{"id":"root","topic":"利用Cursor和Figma MCP自动生成产品原型","children":[{"id":"tools","topic":"工具介绍","direction":"right","expanded":true,"background-color":"#3DA0FF","foreground-color":"#FFFFFF","children":[{"id":"cursor","topic":"Cursor","direction":"right","background-color":"#70BBFF","foreground-color":"#333333"},{"id":"figma","topic":"Figma MCP","direction":"right","background-color":"#70BBFF","foreground-color":"#333333"}]},{"id":"projects","topic":"GitHub项目","direction":"left","expanded":true,"background-color":"#44D7B6","foreground-color":"#FFFFFF","children":[{"id":"project1","topic":"精准控制","direction":"left","background-color":"#7AEACD","foreground-color":"#333333"},{"id":"project2","topic":"从零生成设计元素","direction":"left","background-color":"#7AEACD","foreground-color":"#333333"}]},{"id":"setup","topic":"配置步骤","direction":"right","expanded":true,"background-color":"#FF9500","foreground-color":"#FFFFFF","children":[{"id":"install","topic":"安装包子并配置MCP","direction":"right","background-color":"#FFB870","foreground-color":"#333333"},{"id":"websocket","topic":"启动WebSocket服务器","direction":"right","background-color":"#FFB870","foreground-color":"#333333"},{"id":"plugin","topic":"Figma桌面端安装插件","direction":"right","background-color":"#FFB870","foreground-color":"#333333"},{"id":"channel","topic":"获取channel值并发送给Cursor","direction":"right","background-color":"#FFB870","foreground-color":"#333333"},{"id":"connect","topic":"配置MCP连接并开启auto agent模式","direction":"right","background-color":"#FFB870","foreground-color":"#333333"}]},{"id":"result","topic":"最终效果","direction":"left","expanded":true,"background-color":"#B36DFF","foreground-color":"#FFFFFF","children":[{"id":"prototype","topic":"自动生成产品原型","direction":"left","background-color":"#CFA2FF","foreground-color":"#333333"}]}]}});
+
+              // 默认展开所有节点
+              jm.expand_all();
+            } catch (error) {
+              console.error('渲染思维导图失败:', error);
+              document.getElementById('jsmind_container').innerHTML =
+                '<div style="padding: 20px; color: red;">渲染思维导图失败: ' + error.message + '</div>';
+            }
+          }
+
+          // 初始化界面交互
+          function initUI() {
+            if (!jm) return;
+
+            // 放大按钮
+            document.getElementById('btn-zoom-in').addEventListener('click', () => {
+              jm.view.zoomIn();
+            });
+
+            // 缩小按钮
+            document.getElementById('btn-zoom-out').addEventListener('click', () => {
+              jm.view.zoomOut();
+            });
+
+            // 全部展开按钮
+            document.getElementById('btn-expand-all').addEventListener('click', () => {
+              jm.expand_all();
+            });
+
+            // 全部折叠按钮
+            document.getElementById('btn-collapse-all').addEventListener('click', () => {
+              jm.collapse_all();
+            });
+
+            // 保存截图按钮
+            document.getElementById('btn-screenshot').addEventListener('click', () => {
+              try {
+                // 使用jsMind内置的截图功能
+                if (jm.screenshot) {
+                  jm.screenshot.shootDownload();
+                } else {
+                  alert('当前版本不支持截图功能');
+                }
+              } catch (error) {
+                console.error('截图失败:', error);
+                alert('截图失败: ' + error.message);
+              }
+            });
+
+            // 切换主题按钮
+            document.getElementById('btn-toggle-theme').addEventListener('click', () => {
+              currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+              jm.set_theme(themes[currentThemeIndex]);
+            });
+
+            // 切换工具栏按钮
+            const header = document.querySelector('.header');
+            const container = document.getElementById('jsmind_container');
+            const btnToggle = document.getElementById('btn-toggle-toolbar');
+
+            btnToggle.addEventListener('click', () => {
+              if (header.style.display === 'none') {
+                header.style.display = 'flex';
+                container.style.top = '50px';
+                container.style.height = 'calc(100vh - 50px)';
+                btnToggle.textContent = '隐藏工具栏';
+              } else {
+                header.style.display = 'none';
+                container.style.top = '0';
+                container.style.height = '100vh';
+                btnToggle.textContent = '显示工具栏';
+              }
+            });
+          }
+
+          // 在文档加载完成后初始化
+          document.addEventListener('DOMContentLoaded', () => {
+            renderMindmap();
+            initUI();
+          });
+        </script>
+      </body>
+      </html> 

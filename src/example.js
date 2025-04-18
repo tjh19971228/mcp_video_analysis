@@ -24,7 +24,7 @@ async function example() {
     }
     
     // 视频URL
-    const videoUrl = 'https://www.bilibili.com/video/BV1HFd6YhErb/';
+    const videoUrl = 'https://www.bilibili.com/video/BV1sWoMYUEi9/?spm_id_from=333.1007.tianma.4-1-11.click&vd_source=e708021282dc99e56579d60ed1e204a8';
     let mindmapJson;
     
     try {

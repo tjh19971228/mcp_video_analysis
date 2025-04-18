@@ -1,0 +1,47 @@
+{
+  "keywords": [
+    "本课程",
+    "Cursor",
+    "Figma",
+    "MCP",
+    "产品原型",
+    "自动生成",
+    "GitHub项目",
+    "插件",
+    "WebSocket",
+    "设计元素"
+  ],
+  "summary": "本课程介绍如何利用Cursor和Figma MCP自动生成产品原型",
+  "keyTimepoints": [
+    {
+      "title": "� Cursor + Figma 自动化原型设计",
+      "summary": "本课程介绍如何使用Cursor和Figma MCP自动生成产品原型",
+      "start": 0,
+      "end": 47.34
+    },
+    {
+      "title": "✨ Cursor插件：Figma原型速成",
+      "summary": "Cursor通过Figma插件连接，利用channel实现与Cursor的交互",
+      "start": 47.34,
+      "end": 78.94
+    },
+    {
+      "title": "�️ 包子MCP安装指南",
+      "summary": "安装包子并配置MCP，启动WebSocket服务器",
+      "start": 80.32,
+      "end": 124.94
+    },
+    {
+      "title": "✨ Cursor+Figma 插件安装指南",
+      "summary": "在Figma桌面端安装插件，获取channel值",
+      "start": 125.9,
+      "end": 175.16
+    },
+    {
+      "title": "✨ Cursor Figma 集成指南",
+      "summary": "连接Cursor和Figma的MCP，配置agent模式",
+      "start": 176.16,
+      "end": 217.88
+    }
+  ]
+}

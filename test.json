@@ -1,0 +1,47 @@
+{
+  "keywords": [
+    "Figma",
+    "MCP",
+    "Cursor",
+    "本课程介绍如何利用",
+    "自动生成产品原型。主要涉及两个",
+    "GitHub",
+    "项目，分别侧重精准控制（通过",
+    "API",
+    "连接",
+    "Cursor，用户发送元素链接进行操作）和从零开始生成设计元素（适合设计基础薄弱的用户，但目前仅能生成原型）。使用前需安装包子并配置"
+  ],
+  "summary": "本课程介绍如何利用 Cursor 和 Figma MCP 自动生成产品原型。主要涉及两个 GitHub 项目，分别侧重精准控制（通过 Figma API 连接 Cursor，用户发送元素链接进行操作）和从零开始生成设计元素（适合设计基础薄弱的用户，但目前仅能生成原型）。使用前需安装包子并配置 MCP，启动 WebSocket 服务器获取端口号。在 Figma 桌面端安装插件，获取 channel 值并发送给 Cursor，在 Cursor 中配置 MCP 连接并开启 auto agent 模式即可自动生成原型。虽然 MCP 尚未达到生产级别，但可辅助生成设计稿，仍需人工审核和优化。\n",
+  "keyTimepoints": [
+    {
+      "title": "💡 Cursor + Figma 自动化原型设计",
+      "summary": "本课程介绍如何使用Cursor和Figma MCP自动生成产品原型。重点介绍了两个GitHub项目：figma context mcp和cursor talk to figma cp。其中，figma context mcp通过获取Figma API实现Cursor与Figma的连接，更侧重精准控制，用户可以通过复制特定元素的链接发送给Cursor进行操作。整个过程用户只需提出需求，无需过多手动控制。",
+      "start": 0,
+      "end": 47.34
+    },
+    {
+      "title": "✨ Cursor插件：Figma原型速成",
+      "summary": "Cursor通过Figma插件连接，利用channel实现与Cursor的交互，主要用于从零开始生成设计元素，适合设计基础薄弱的用户。目前该MCP仅能生成原型，距离生成完整设计稿尚有差距。用户需下载项目代码（main.fejson文件用于插件安装），以便进行演示。",
+      "start": 47.34,
+      "end": 78.94
+    },
+    {
+      "title": "🛠️ 包子MCP安装指南",
+      "summary": "根据GitHub项目的README文档，首先需要安装包子（一个新兴的JavaScript运行环境），然后通过运行setup指令或手动配置在项目中安装MCP。启动WebSocket服务器后，会显示服务器运行端口（例如3055），该端口将在后续步骤中使用。如果同时执行了两种配置方法，可能会出现两个MCP服务器，关闭其中一个即可。",
+      "start": 80.32,
+      "end": 124.94
+    },
+    {
+      "title": "✨ Cursor+Figma 插件安装指南",
+      "summary": "要使用Cursor+Figma MCP插件自动生成可编辑设计稿，需要在Figma桌面端安装该插件。首先安装Figma桌面端，然后通过“plugins development import from manifest Jason”导入manifest Jason文件。安装完成后，点击画布底部的插件icon，选择cursmcp plugin。插件会显示channel值，用于帮助Cursor识别当前Figma文件，以便生成设计稿。每个Figma文件的channel值都不同，每次连接都会变化。",
+      "start": 125.9,
+      "end": 175.16
+    },
+    {
+      "title": "✨ Cursor Figma 集成指南",
+      "summary": "连接 Cursor 和 Figma 的 MCP 后，在 Cursor 的 MCP 设置中确认连接成功，选择 agent 模式并输入 \"talk to ma\"，然后将 channel 值发送给 Cursor。如果需要自动创建产品原型，需开启 auto agent 模式。虽然 MCP 尚未达到完全生产级别，但可以辅助生成设计稿，仍需人工审核和优化。",
+      "start": 176.16,
+      "end": 217.88
+    }
+  ]
+}

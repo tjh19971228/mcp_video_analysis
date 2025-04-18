@@ -7,6 +7,19 @@
 
 这是一个基于Model Context Protocol (MCP)的服务，用于视频内容分析和思维导图生成。
 
+### 更新日志
+
+#### v1.0.0 (2025-04-17)
+- 初始版本发布
+- 支持视频分析功能
+- 支持思维导图生成
+
+#### v1.1.0 (2025-04-18)
+- 优化生成总结的功能
+- bugfix: 修复生成mindmap.json时，参数错误的问题
+- refactor: 重构生成思维导图HTML的逻辑
+- doc: 新增调用示例 task.md
+
 ### 功能特点
 
 - **视频分析**：从视频URL中提取关键词、摘要和关键时间点
@@ -70,7 +83,11 @@ node src/index.js
   "mcpServers": {
     "video-analysis": {
       "command": "node",
-      "args": ["your_project_path/src/index.js"]
+      "args": ["your_project_path/src/index.js"],
+      "env": {
+        "BILIGPT_API_KEY": "your_biligpt_api_key",
+        "DEEPSEEK_API_KEY": "your_deepseek_api_key"
+      }
     }
   }
 }
@@ -135,6 +152,19 @@ MIT
 
 This is a service based on the Model Context Protocol (MCP) for video content analysis and mind map generation.
 
+### Changelog
+
+#### v1.0.0 (2025-04-17)
+- Initial release
+- Video analysis support
+- Mind map generation
+
+#### v1.1.0 (2025-04-18)
+- Optimized summary generation
+- bugfix: Fixed parameter error when generating mindmap.json
+- refactor: Restructured the logic for generating mind map HTML
+- doc: Added usage examples in task.md
+
 ### Features
 
 - **Video Analysis**: Extract keywords, summaries, and key timepoints from video URLs
@@ -198,7 +228,11 @@ To use this MCP service with Claude desktop, edit the `claude_desktop_config.jso
   "mcpServers": {
     "video-analysis": {
       "command": "node",
-      "args": ["your_project_path/src/index.js"]
+      "args": ["your_project_path/src/index.js"],
+      "env": {
+        "BILIGPT_API_KEY": "your_biligpt_api_key",
+        "DEEPSEEK_API_KEY": "your_deepseek_api_key"
+      }
     }
   }
 }

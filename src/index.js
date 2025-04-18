@@ -40,23 +40,71 @@ server.tool(
 server.tool(
   'generateMindmapJson',
   {
-    keywords: z.array(z.string()),
+    keywords: z.preprocess(
+      // 预处理keywords数组，确保所有字符串都被正确处理
+      (val) => {
+        if (typeof val === 'string') {
+          try {
+            // 尝试解析可能是字符串形式的JSON
+            return JSON.parse(val);
+          } catch (e) {
+            // 如果解析失败，返回原始值
+            return val;
+          }
+        }
+        return val;
+      },
+      z.array(z.string())
+    ),
     summary: z.string(),
-    keyTimepoints: z.array(z.object({
-      title: z.string(),
-      summary: z.string(),
-      start: z.number(),
-      end: z.number()
-    }))
+    keyTimepoints: z.string()
   },
-  async ({ keywords, summary, keyTimepoints }) => {
+  async (params) => {
     try {
       console.error('生成思维导图JSON');
-      const result = await mindmapService.generateMindmapJson({
-        keywords,
-        summary,
-        keyTimepoints
-      });
+
+      // 对传入的数据进行安全处理
+      let safeParams = {};
+
+      try {
+        // 处理keywords，确保是数组并处理引号
+        if (params.keywords) {
+          safeParams.keywords = Array.isArray(params.keywords)
+            ? params.keywords.map(k => String(k).replace(/"/g, '\''))
+            : [String(params.keywords).replace(/"/g, '\'')];
+        } else {
+          safeParams.keywords = [];
+        }
+
+        // 处理summary，确保是字符串并处理引号
+        safeParams.summary = String(params.summary || '').replace(/"/g, '\'');
+
+        // 处理keyTimepoints，确保是格式正确的数组并处理引号
+        if (params.keyTimepoints) {
+          if (Array.isArray(params.keyTimepoints)) {
+            safeParams.keyTimepoints = params.keyTimepoints.map(point => ({
+              title: String(point.title || '').replace(/"/g, '\''),
+              summary: String(point.summary || '').replace(/"/g, '\''),
+              start: Number(point.start || 0),
+              end: Number(point.end || 0)
+            }));
+          } else {
+            safeParams.keyTimepoints = [];
+          }
+        } else {
+          safeParams.keyTimepoints = [];
+        }
+
+        console.error('数据预处理完成，开始生成思维导图');
+      } catch (preprocessError) {
+        console.error('数据预处理失败:', preprocessError);
+        console.error('尝试使用原始数据');
+        safeParams = params;
+      }
+
+      // 调用mindmapService生成思维导图
+      const result = await mindmapService.generateMindmapJson(safeParams);
+
       return {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }]
       };
@@ -70,51 +118,24 @@ server.tool(
   }
 );
 
-// 注册思维导图图片生成工具
-server.tool(
-  'generateMindmapImage',
-  {
-    json: z.object({}).passthrough(),
-    outputPath: z.string().optional().default('./mindmap.png')
-  },
-  async ({ json, outputPath }) => {
-    try {
-      console.error('生成思维导图图片');
-      const imagePath = await mindmapService.generateMindmapImage({
-        json,
-        outputPath
-      });
-      return {
-        content: [{ type: 'text', text: `思维导图图片已保存到: ${imagePath}` }]
-      };
-    } catch (error) {
-      console.error('生成思维导图图片失败:', error);
-      return {
-        isError: true,
-        content: [{ type: 'text', text: `生成思维导图图片失败: ${error.message}` }]
-      };
-    }
-  }
-);
+
 
 // 注册思维导图HTML生成工具
 server.tool(
   'generateMindmapHtml',
   {
     json: z.object({}).passthrough(),
-    outputPath: z.string().optional().default('./mindmap.html'),
     title: z.string().optional().default('视频内容思维导图')
   },
   async ({ json, outputPath, title }) => {
     try {
       console.error('生成思维导图HTML');
-      const htmlPath = await mindmapService.generateMindmapHtml({
+      const html = await mindmapService.generateMindmapHtml({
         json,
-        outputPath,
         title
       });
       return {
-        content: [{ type: 'text', text: `思维导图HTML已保存到: ${htmlPath}` }]
+        content: [{ type: 'text', text: html }]
       };
     } catch (error) {
       console.error('生成思维导图HTML失败:', error);
@@ -126,15 +147,17 @@ server.tool(
   }
 );
 
+
+
 // 启动服务
 async function main() {
   try {
     // 创建stdio传输层
     const transport = new StdioServerTransport();
-    
+
     // 连接传输层并启动服务
     await server.connect(transport);
-    
+
     console.error('视频分析MCP服务已启动');
   } catch (error) {
     console.error('启动MCP服务失败:', error);
@@ -143,4 +166,4 @@ async function main() {
 }
 
 // 启动服务
-main(); 
+main();
