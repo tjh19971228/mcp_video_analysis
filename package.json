@@ -10,6 +10,11 @@
     "lint": "eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjh19971228/mcp_video_analysis.git"
+  },
+  "homepage": "https://github.com/tjh19971228/mcp_video_analysis#readme",
   "keywords": [
     "MCP",
     "video",

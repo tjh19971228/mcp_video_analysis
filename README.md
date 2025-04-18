@@ -14,11 +14,18 @@
 - 支持视频分析功能
 - 支持思维导图生成
 
-#### v1.1.0 (2025-04-18)
+#### v1.0.2 (2025-04-18)
 - 优化生成总结的功能
 - bugfix: 修复生成mindmap.json时，参数错误的问题
 - refactor: 重构生成思维导图HTML的逻辑
 - doc: 新增调用示例 task.md
+
+
+### 正在开发
+
+- 支持字幕文件导出
+- AI改写
+- 展示流 html页面
 
 ### 功能特点
 
@@ -148,6 +155,7 @@ MIT
 ---
 
 <a name="english"></a>
+
 ## English Version
 
 This is a service based on the Model Context Protocol (MCP) for video content analysis and mind map generation.
@@ -159,11 +167,17 @@ This is a service based on the Model Context Protocol (MCP) for video content an
 - Video analysis support
 - Mind map generation
 
-#### v1.1.0 (2025-04-18)
+#### v1.0.1 (2025-04-18)
 - Optimized summary generation
 - bugfix: Fixed parameter error when generating mindmap.json
 - refactor: Restructured the logic for generating mind map HTML
 - doc: Added usage examples in task.md
+
+### Under Development
+
+- Support for exporting subtitle files
+- AI Rewriting
+- Demo flow HTML page
 
 ### Features
 
